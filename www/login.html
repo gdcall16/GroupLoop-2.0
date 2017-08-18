@@ -3,27 +3,23 @@
 <head>
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
 <link rel="stylesheet" type="text/css" href="buttonstyle.css">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>User Login</title>
+
 <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDCwQyhxTLe0YlhRlWCIJN3f7HotFVoaUo",
-    authDomain: "group-loop.firebaseapp.com",
-    databaseURL: "https://group-loop.firebaseio.com",
-    projectId: "group-loop",
-    storageBucket: "group-loop.appspot.com",
-    messagingSenderId: "224750482964"
-  };
-  firebase.initializeApp(config);
-</script>
-  <title>User Login</title>
- </head>
+<script src="js/loginScript.js"></script>
+</head>
+
+
 <body>
-<img src="gllogo.png" alt=Logo>
-<center>
-  <a href="login.html">Log In</a>
-  <a href="newuser.html">Sign up</a>
-  <a href="index.html">Home Page</a>
+  <img src="gllogo.png" alt=Logo>
+  <center>
+    <a href="login.html">Log In</a>
+    <a href="newuser.html">Sign up</a>
+    <a href="index.html">Home Page</a>
 
 
 <!--<div class="dropdown">
@@ -36,10 +32,15 @@
 </div>-->
 
 <h1>Login:</h1>
-<form action="">
-  Username: <input type="text" name="username" value=""><br>
-  Password: <input type="password" name="password" value=""><br>
-  <input type="submit" value="Login">
+  <p>Input Username:</p>
+  <input type="text" id="loadKey"></input>
+  <br><br>
+  <p>Input Password:</p>
+  <input type="text" id="loadPass"></input>
+  <br><br>
+  <button onclick="login()">Login!</button>
+  <br>
+  <p id="loadValue">Value will display here</p>
 </center>
 </body>
 </html>
