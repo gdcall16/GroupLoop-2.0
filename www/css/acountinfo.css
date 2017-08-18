@@ -8,12 +8,12 @@ body {
   line-height: 150%;
 }
 
-p {
+/*p {
   background-color: #fdf5e6;
   border: 10px solid #fdf5e6;
   border-radius: 10px;
   margin: 5px 10px 5px 5px;
-}
+}*/
 
 p2 { /* For copyright text in bottom left*/
   font-size: x-small;
