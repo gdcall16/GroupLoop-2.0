@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+<link rel="stylesheet" type="text/css" href="buttonstyle.css">
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDCwQyhxTLe0YlhRlWCIJN3f7HotFVoaUo",
+    authDomain: "group-loop.firebaseapp.com",
+    databaseURL: "https://group-loop.firebaseio.com",
+    projectId: "group-loop",
+    storageBucket: "group-loop.appspot.com",
+    messagingSenderId: "224750482964"
+  };
+  firebase.initializeApp(config);
+</script>
+  <title>User Login</title>
+ </head>
+<body>
+<img src="gllogo.png" alt=Logo>
+<center>
+  <a href="login.html">Log In</a>
+  <a href="newuser.html">Sign up</a>
+  <a href="index.html">Home Page</a>
+
+
+<!--<div class="dropdown">
+  <button class="dropbtn">...</button>
+  <div class="dropdown-content">
+    <a href="index.html">Home</a>
+    <a href="login.html">Login</a>
+    <a href="userdash.html">User Dashboard</a>
+  </div>
+</div>-->
+
+<h1>Login:</h1>
+<form action="">
+  Username: <input type="text" name="username" value=""><br>
+  Password: <input type="password" name="password" value=""><br>
+  <input type="submit" value="Login">
+</center>
+</body>
+</html>

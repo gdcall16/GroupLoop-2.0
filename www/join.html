@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+<link rel="stylesheet" type="text/css" href="buttonstyle.css">
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDCwQyhxTLe0YlhRlWCIJN3f7HotFVoaUo",
+    authDomain: "group-loop.firebaseapp.com",
+    databaseURL: "https://group-loop.firebaseio.com",
+    projectId: "group-loop",
+    storageBucket: "group-loop.appspot.com",
+    messagingSenderId: "224750482964"
+  };
+  firebase.initializeApp(config);
+</script>
+  <title>Join Project</title>
+ </head>
+<body>
+<img src="gllogo.png" alt=Logo>
+<div class="dropdown">
+  <button class="dropbtn">...</button>
+  <div class="dropdown-content">
+    <a href="index.html">Home</a>
+    <a href="login.html">Login</a>
+    <a href="userdash.html">User Dashboard</a>
+  </div>
+</div>
+<h1>Join a Project:</h1>
+<form action="">
+  Project Pin: <input type="text" name="pin" value=""><br><br>
+  <input type="submit" value="Join">
+</body>
+</html>
