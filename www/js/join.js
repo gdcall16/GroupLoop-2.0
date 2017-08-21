@@ -29,6 +29,7 @@ function joinProj() {
     firebase.database().ref("groups/" + id + "/members/" + currentUser).set({
       tasks : false,
     });
+    sessionStorage.setItem("id", id);
     window.location = "project.html";
   }
   else {
