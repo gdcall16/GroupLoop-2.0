@@ -27,10 +27,11 @@ function numGen() {
   //if/else code to look through database and see if the pin has been used before
   return pin;
 }
+
 //Store the data of the project
 function storeData(){
-  var className = document.getElementById('name').value;
-  var projName = document.getElementById('email').value;
+  var className = document.getElementById('classname').value;
+  var projName = document.getElementById('name').value;
   var dateDue = document.getElementById('duedate').value;
   //Generate project id
   var projId = numGen();
@@ -38,7 +39,8 @@ function storeData(){
   document.getElementById('create').style = "display:none;";
   var pin = document.createElement('h3');
   pin.textContent = "Your project id is: " + projId;
-  document.body.appendChild(pin);
+  var z = document.getElementById("text");
+  z.appendChild(pin);
   //Add project data to the database
   firebase.database().ref("groups/" + projId).set({
     //TODO add user to list of users

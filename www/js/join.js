@@ -12,7 +12,7 @@ var database = firebase.database();
 var addProj = 0;
 var currentUser = "";
 var id = "";
-sessionStorage.setItem("username", "Rita");
+
 function start(){
   var username = sessionStorage.username;
   currentUser = username;
@@ -29,13 +29,14 @@ function joinProj() {
     firebase.database().ref("groups/" + id + "/members/" + currentUser).set({
       tasks : false,
     });
+    sessionStorage.setItem("id", id);
     window.location = "project.html";
   }
   else {
     document.getElementById('confirm').style = "display:none;";
     var pin = document.createElement('p');
     pin.textContent = "You are already a member of this group";
-    document.body.appendChild(pin);
+    document.getElementById('text').appendChild(pin);
   };
   });
 }
@@ -50,19 +51,19 @@ function findProj() {
         found = true;
       };
     });
-    if (found) {
+    if (found == true) {
       database.ref("groups/" + id + "/name").once('value').then(function(snapshot){
-        var name = snapshot.name;
+        var name = snapshot.val();
+        document.getElementById('join').style = "display:none;";
+        var pin = document.createElement('div');
+        pin.id = "confirm";
+        pin.textContent = "The name of this project is: "+ name + ", do you want to join this project?";
+        var btn = document.createElement('button');
+        btn.innerHTML = "Join Group";
+        btn.onclick = joinProj;
+        pin.appendChild(btn);
+        document.getElementById('text').appendChild(pin);
       });
-      document.getElementById('join').style = "display:none;";
-      var pin = document.createElement('div');
-      pin.id = "confirm";
-      pin.textContent = "The name of this project is : "+ name + ", do you want to join this project?";
-      var btn = document.createElement('button');
-      btn.innerHTML = "Join Group";
-      btn.onclick = joinProj;
-      pin.appendChild(btn);
-      document.body.appendChild(pin);
       } else {
       if (addProj == 1) {
         var pin = document.createElement('h3');

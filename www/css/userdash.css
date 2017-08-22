@@ -1,15 +1,18 @@
-#skill {
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+.skill {
 	list-style: none;
 	font: 12px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-	width: 296px;
-	margin: 50px auto 0;
-	position: relative;
+	width: 100px;
+	margin: 0px auto 0;
+	position: absolute;
 	line-height: 2em;
-	padding: 30px 0;
+	padding: 0px 0;
 }
 
-#skill li {
-	margin-bottom:50px;
+#skill li{
+	align-items: center;
+	margin-bottom:0px;
+	list-style:none;
 	background:#e9e5e2;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#e1ddd9), to(#e9e5e2));
 	background-image: -webkit-linear-gradient(top, #e1ddd9, #e9e5e2);
@@ -17,21 +20,17 @@
 	background-image: -ms-linear-gradient(top, #e1ddd9, #e9e5e2);
 	background-image: -o-linear-gradient(top, #e1ddd9, #e9e5e2);
 	background-image: linear-gradient(top, #e1ddd9, #e9e5e2);
-	height:20px;
+	height:40px;
 	border-radius:10px;
 	-moz-box-shadow: 0 1px 0px #bebbb9 inset, 0 1px 0 #fcfcfc;
 	-webkit-box-shadow: 0 1px 0px #bebbb9 inset, 0 1px 0 #fcfcfc;
 	box-shadow: 0 1px 0px #bebbb9 inset, 0 1px 0 #fcfcfc;
 }
 
-#skill li h3 {
-	position:relative;
-	top:-25px;
-}
-
 .bar {
-	height:18px;
-	margin:1px 2px;
+	align-items: center;
+	height:40px;
+	margin-right: 50px;
 	position:absolute;
 	border-radius:10px;
 	-moz-box-shadow: 0 1px 0px #fcfcfc inset, 0 1px 0 #bebbb9;
@@ -40,14 +39,78 @@
 }
 
 .html-css {
+	align-items: center;
 	width:50%;
-	-moz-animation:html-css 2s ease-out;
-	-webkit-animation:html-css 2s ease-out;
-	background-color: #f0bb4b;
+	background-color: #32127A;
 	background-image: webkit-gradient(linear, left top, left bottom, from(#f0bb4b), to(#d9aa44));
-	background-image: -webkit-linear-gradient(top, #f0bb4b, #d9aa44);
-	background-image: -moz-linear-gradient(top, #f0bb4b, #d9aa44);
-	background-image: -ms-linear-gradient(top, #f0bb4b, #d9aa44);
-	background-image: -o-linear-gradient(top, #f0bb4b, #d9aa44);
-	background-image: linear-gradient(top, #f0bb4b, #d9aa44);
+	background-image: -webkit-linear-gradient(top, #49a50b, #49a50b);
+	background-image: -moz-linear-gradient(top, #49a50b, #49a50b);
+	background-image: -ms-linear-gradient(top, #49a50b, #49a50b);
+	background-image: -o-linear-gradient(top, #49a50b, #49a50b);
+	background-image: linear-gradient(top, #49a50b, #49a50b);
+}
+
+
+.eachproject {
+	padding: 20px;
+	background-color: #78D6F7;
+
+}
+
+.button {
+    background-color:whitesmoke ;
+		align-content: center;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.belowproject {
+	display: inline;
+}
+
+body {
+  align: center;
+  margin: 2cm 4cm 3cm 4cm;
+  /*background-color: #D5F5E3;*/
+  background-image: url("../backgroundPage.jpg");
+  font-family: 'Raleway';
+  line-height: 150%;
+}
+
+p {
+  background-color: #fdf5e6;
+  border: 15px solid #fdf5e6;
+  border-radius: 10px;
+}
+
+p2 { /* For copyright text in bottom left*/
+  font-size: x-small;
+}
+img {
+  display: block;
+  margin: auto;
+
+}
+
+a { /* links to other pages */
+  margin: 200px 100px 200px 100px;
+  text-decoration: none;
+  text-align: justify;
+  font-size: 125%;
+  color: black;
+}
+
+a:hover{
+  color: white;
+}
+form {
+  direction: rtl;
+}
+input {
+  display: block;
+  direction: ltr;
 }

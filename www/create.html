@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="css/acountinfo.css">
 <link rel="stylesheet" type="text/css" href="css/buttonstyle.css">
 <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
-<script type="text/javascript" src="create.js"></script>
+<script type="text/javascript" src="js/create.js"></script>
   <title>Create Project</title>
  </head>
 <body>
@@ -24,13 +24,15 @@
 <br>
 <div id="create">
   <p>Class Name:</p>
-  <input type="text" id="name"><br>
-  <p>Project Name:</p>
   <input type="text" id="classname"><br>
+  <p>Project Name:</p>
+  <input type="text" id="name"><br>
   <p>Due Date:</p>
   <input type="date" id="duedate"><br><br>
-  <button>Create</button>
+  <button onclick="storeData()">Create</button>
 <br>
+</div>
+<div id="text">
 </div>
 </center>
 <p2>published 2017  created by gabi, jenna, katie and lucia with AT&T Girls Who Code Summer Immersion Camp.</p2>
