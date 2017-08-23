@@ -9,7 +9,7 @@ var config = {
 };
 firebase.initializeApp(config);
 database = firebase.database();
-var id = sessionStorage.id;
+var id = "gdc123";
 var val = 0;
 calcPercentage();
 
@@ -72,5 +72,47 @@ function projOverview(){
     element = document.createElement('p');
     element.innerHTML = "Class: " + snapshot.val().classname;
     document.getElementById('proj-overview').appendChild(element);
+  });
+}
+
+function printProjInfo(mainProj){
+
+  database.ref("groups/" + mainProj + "/users/").once('value').then(function(snapshot){
+    var members = snapshot.val();
+    //console.log(members)
+
+    for (var user in members){
+      var info = members[user];
+      var eachUser = document.createElement("div");
+      eachUser.className = "userClass";
+      var nameOfUser = document.createElement("p");
+      var inbox = document.getElementById("container");
+      nameOfUser.innerHTML = user;
+      eachUser.appendChild(nameOfUser);
+      for (var task in info){
+        var infoOfTask = info[task];
+        var desc = infoOfTask["desc"];
+
+        var comp = infoOfTask["completion"];
+
+        var todo = document.createElement("p");
+        if (comp == true){
+          todo.innerHTML = desc + ": completed";
+          console.log(comp);
+        }
+        if (comp == false){
+          todo.innerHTML = desc + ": uncompleted";
+          console.log(comp);
+        }
+
+
+
+
+        eachUser.appendChild(todo);
+
+
+      }
+      inbox.appendChild(eachUser);
+    }
   });
 }
