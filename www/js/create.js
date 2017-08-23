@@ -49,7 +49,7 @@ function storeData(){
     duedate: dateDue,
     classname: className,
   });
-  firebase.database().ref("groups/" + projId + "/users/" + username).set({
-    task0: true,
+  firebase.database().ref("groups/" + projId + "/users").set({
+    currentUser: true,
   });
 }
