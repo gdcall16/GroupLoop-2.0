@@ -26,8 +26,8 @@ function joinProj() {
       }
     });
   if (able == true){
-    firebase.database().ref("groups/" + id + "/users").set({
-      currentUser : true,
+    firebase.database().ref("groups/" + id + "/users/" + currentUser).set({
+      0 : true,
     });
     sessionStorage.setItem("id", id);
     window.location = "project.html";
