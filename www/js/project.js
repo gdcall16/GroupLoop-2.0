@@ -21,7 +21,7 @@ function checkOff (name) {
 function calcPercentage() {
   var num = 0;
   var complete = 0;
-  database.ref("groups/" + id + "/members").once('value').then(function(snapshot){
+  database.ref("groups/" + id + "/users").once('value').then(function(snapshot){
     snapshot.forEach(function(childSnapshot) {
       childSnapshot.forEach(function(babySnapshot) {
         num += 1;

@@ -33,7 +33,7 @@ database.ref("users/" + username + "/projects").once('value').then(function(snap
           //Calculates completion progress for group
           var num = 0;
           var complete = 0;
-          database.ref("groups/" + ids[id] + "/members").once('value').then(function(snapshot){
+          database.ref("groups/" + ids[id] + "/users").once('value').then(function(snapshot){
             snapshot.forEach(function(childSnapshot) {
               childSnapshot.forEach(function(babySnapshot) {
                 num += 1;
@@ -73,7 +73,7 @@ database.ref("users/" + username + "/projects").once('value').then(function(snap
           element4 = document.createElement('p');
           //Add list of members to variable
           var members = "";
-          childSnapshot.child('members').forEach(function(babySnapshot){
+          childSnapshot.child('users').forEach(function(babySnapshot){
             members += babySnapshot.key;
             members += ", ";
           })

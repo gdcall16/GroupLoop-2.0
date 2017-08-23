@@ -19,14 +19,14 @@ function start(){
 }
 function joinProj() {
   var able = true;
-  database.ref("groups/" + id + "/members").once('value').then(function(snapshot){
+  database.ref("groups/" + id + "/users").once('value').then(function(snapshot){
     snapshot.forEach(function(childSnapshot) {
       if (childSnapshot.key == currentUser){
         able = false;
       }
     });
   if (able == true){
-    firebase.database().ref("groups/" + id + "/members/" + currentUser).set({
+    firebase.database().ref("groups/" + id + "/users/" + currentUser).set({
       tasks : false,
     });
     sessionStorage.setItem("id", id);
