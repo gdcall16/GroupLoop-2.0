@@ -19,15 +19,15 @@ function start(){
 }
 function joinProj() {
   var able = true;
-  database.ref("groups/" + id + "/members").once('value').then(function(snapshot){
+  database.ref("groups/" + id + "/users").once('value').then(function(snapshot){
     snapshot.forEach(function(childSnapshot) {
       if (childSnapshot.key == currentUser){
         able = false;
       }
     });
   if (able == true){
-    firebase.database().ref("groups/" + id + "/members/" + currentUser).set({
-      tasks : false,
+    firebase.database().ref("groups/" + id + "/users/" + currentUser).set({
+      0 : true,
     });
     sessionStorage.setItem("id", id);
     window.location = "project.html";
@@ -60,7 +60,7 @@ function findProj() {
         pin.textContent = "The name of this project is: "+ name + ", do you want to join this project?";
         var btn = document.createElement('button');
         btn.innerHTML = "Join Group";
-        btn.onclick = joinProj;
+        btn.onclick = joinProj();
         pin.appendChild(btn);
         document.getElementById('text').appendChild(pin);
       });

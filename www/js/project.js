@@ -9,14 +9,19 @@ var config = {
 };
 firebase.initializeApp(config);
 database = firebase.database();
-var id = "gdc123";
+var id = sessionStorage.id;
+var username = sessionStorage.username;
 var val = 0;
 calcPercentage();
+
+function checkOff (name) {
+  database.ref("groups/" + id + "/users/" + username + "/" + name + "/completion").set(true);
+}
 
 function calcPercentage() {
   var num = 0;
   var complete = 0;
-  database.ref("groups/" + id + "/members").once('value').then(function(snapshot){
+  database.ref("groups/" + id + "/users").once('value').then(function(snapshot){
     snapshot.forEach(function(childSnapshot) {
       childSnapshot.forEach(function(babySnapshot) {
         num += 1;
@@ -120,6 +125,7 @@ function printProjInfo(mainProj){
 
         }
         checkmark.style = "display: inline";
+        checkmark.onclick = checkOff(infoOfTask);
         todo.style = "display: inline";
         eachTask.className = "taskClass";
         eachTask.appendChild(checkmark);
