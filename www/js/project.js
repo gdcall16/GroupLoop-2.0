@@ -9,7 +9,8 @@ var config = {
 };
 firebase.initializeApp(config);
 database = firebase.database();
-var id = "gdc123";
+var id = sessionStorage.id;
+var username = sessionStorage.username;
 var val = 0;
 calcPercentage();
 
