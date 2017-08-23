@@ -90,46 +90,69 @@ function printProjInfo(mainProj){
   database.ref("groups/" + mainProj + "/users/").once('value').then(function(snapshot){
     var members = snapshot.val();
     //console.log(members)
-      var element = document.createElement('br');
 
     for (var user in members){
+
       var info = members[user];
       var eachUser = document.createElement("div");
       eachUser.className = "userClass";
-      var nameOfUser = document.createElement("h2");
+      var nameOfUser = document.createElement("p");
       var inbox = document.getElementById("container");
       nameOfUser.innerHTML = user;
       eachUser.appendChild(nameOfUser);
       for (var task in info){
+        var eachTask = document.createElement("div");
+        var checkmark = document.createElement("BUTTON");
+        checkmark.innerHTML = "✔";
         var infoOfTask = info[task];
+        console.log(infoOfTask);
         var desc = infoOfTask["desc"];
 
         var comp = infoOfTask["completion"];
 
         var todo = document.createElement("p");
         if (comp == true){
-          todo.innerHTML = "Task: " + desc + " Completed";
+          todo.innerHTML = desc + ": completed";
           console.log(comp);
         }
         if (comp == false){
-          todo.innerHTML = "Task: " + desc + " Incomplete";
+          todo.innerHTML = desc + ": uncompleted";
+
           console.log(comp);
         }
+        checkmark.style = "display: inline";
+        todo.style = "display: inline";
+        eachTask.className = "taskClass";
+        eachTask.appendChild(checkmark);
+        eachTask.appendChild(todo);
+        eachUser.appendChild(eachTask);
 
-        //var element = document.createElement('br');
-        //eachUser.appendChild(element);
 
-
-        eachUser.appendChild(todo);
-        eachUser.appendChild(element);
-        eachUser.appendChild(element);
 
 
       }
       inbox.appendChild(eachUser);
-      inbox.appendChild(element);
-      inbox.appendChild(element);
+    }
+  });
+}
 
+
+function addTask(){
+  console.log("yay!")
+  var newTask = document.getElementById('loadTask').value;
+  console.log (sessionStorage.username)
+  database.ref("groups/gdc123/users/" + sessionStorage.username).once('value').then(function(snapshot){
+    var json = snapshot.val();
+    if (json != null){
+    console.log("not null")
+    var numOfTasks = Object.keys(json).length
+    var addNewTask = numOfTasks + 1
+    var taskName = "task" + addNewTask
+
+    database.ref("groups/gdc123/users/" + sessionStorage.username + "/" + taskName).set({desc: newTask, completion: false});
+    }
+    else{
+      console.log("null")
     }
   });
 }
