@@ -17,6 +17,8 @@ sessionStorage.setItem("username", "Gabi");
 function start(){
   var username = sessionStorage.username;
   currentUser = username;
+  console.log(currentUser);
+  console.log(sessionStorage.id);
 }
 
 //function to generate a number
