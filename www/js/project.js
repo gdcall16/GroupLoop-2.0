@@ -96,7 +96,7 @@ function printProjInfo(mainProj){
       var info = members[user];
       var eachUser = document.createElement("div");
       eachUser.className = "userClass";
-      var nameOfUser = document.createElement("p");
+      var nameOfUser = document.createElement("h2");
       var inbox = document.getElementById("container");
       nameOfUser.innerHTML = user;
       eachUser.appendChild(nameOfUser);
@@ -108,11 +108,11 @@ function printProjInfo(mainProj){
 
         var todo = document.createElement("p");
         if (comp == true){
-          todo.innerHTML = desc + ": completed";
+          todo.innerHTML = "Task: " + desc + " Completed";
           console.log(comp);
         }
         if (comp == false){
-          todo.innerHTML = desc + ": uncompleted";
+          todo.innerHTML = "Task: " + desc + " Incomplete";
           console.log(comp);
         }
 
