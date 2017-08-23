@@ -12,13 +12,10 @@ firebase.initializeApp(config);
 var database = firebase.database();
 var currentUser = "";
 
-sessionStorage.setItem("username", "Gabi");
 
 function start(){
   var username = sessionStorage.username;
   currentUser = username;
-  console.log(currentUser);
-  console.log(sessionStorage.id);
 }
 window.onload = start();
 //function to generate a number
