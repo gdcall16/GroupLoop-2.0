@@ -106,20 +106,18 @@ function printProjInfo(mainProj){
         var checkmark = document.createElement("BUTTON");
         checkmark.innerHTML = "✔";
         var infoOfTask = info[task];
-        console.log(infoOfTask);
         var desc = infoOfTask["desc"];
-
         var comp = infoOfTask["completion"];
-
         var todo = document.createElement("p");
+        todo.className
         if (comp == true){
-          todo.innerHTML = "Task: " + desc + " COMPLETED";
-          console.log(comp);
+          todo.innerHTML = "   " + desc + ": COMPLETED";
+
         }
         if (comp == false){
-          todo.innerHTML = "Task: " + desc + " INCOMPLETE";
+          todo.innerHTML = "   " + desc + ": INCOMPLETE";
 
-          console.log(comp);
+
         }
         checkmark.style = "display: inline";
         todo.style = "display: inline";

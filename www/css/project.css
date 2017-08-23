@@ -76,6 +76,10 @@
 	border-radius: 10px;
 }
 
+.taskClass {
+	font-size: 15px;
+}
+
 body {
   align: center;
   margin: 2cm 4cm 3cm 4cm;
