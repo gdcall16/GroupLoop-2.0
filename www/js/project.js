@@ -90,13 +90,21 @@ function printProjInfo(mainProj){
       for (var task in info){
         var infoOfTask = info[task];
         var desc = infoOfTask["desc"];
-        console.log(desc);
+
         var comp = infoOfTask["completion"];
 
         var todo = document.createElement("p");
+        if (comp == true){
+          todo.innerHTML = desc + ": completed";
+          console.log(comp);
+        }
+        if (comp == false){
+          todo.innerHTML = desc + ": uncompleted";
+          console.log(comp);
+        }
 
 
-        todo.innerHTML = desc + ": " + comp;
+
 
         inbox.appendChild(todo);
 
