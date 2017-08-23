@@ -50,6 +50,6 @@ function storeData(){
     classname: className,
   });
   firebase.database().ref("groups/" + projId + "/users/" + currentUser).set({
-    0: true,
+    task0: true,
   });
 }
