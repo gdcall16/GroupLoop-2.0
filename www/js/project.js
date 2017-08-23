@@ -18,14 +18,13 @@ function calcPercentage() {
   var complete = 0;
   database.ref("groups/" + id + "/members").once('value').then(function(snapshot){
     snapshot.forEach(function(childSnapshot) {
-      childSnapshot.val().tasks.forEach(function(babySnapshot){
+      childSnapshot.forEach(function(babySnapshot) {
         num += 1;
-        if (babySnapshot.completed == true) {
+        if (babySnapshot.val().completed == true) {
           complete += 1;
-        }
-      });
+      }
     });
-
+    });
     if (num == 0) {
       val = 0;
     }
