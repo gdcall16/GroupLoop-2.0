@@ -13,6 +13,10 @@ var id = "gdc123";
 var val = 0;
 calcPercentage();
 
+function checkOff (name) {
+  database.ref("groups/" + id + "/users/" + username + "/" + name + "/completion").set(true);
+}
+
 function calcPercentage() {
   var num = 0;
   var complete = 0;
@@ -120,6 +124,7 @@ function printProjInfo(mainProj){
 
         }
         checkmark.style = "display: inline";
+        checkmark.onclick = checkOff(infoOfTask);
         todo.style = "display: inline";
         eachTask.className = "taskClass";
         eachTask.appendChild(checkmark);
