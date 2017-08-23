@@ -43,16 +43,35 @@ function projOverview(){
   var head = document.getElementById("proj-overview");
   database.ref("groups/" + id).on("value", function(snapshot){
     //Print project name
-    var element = document.createElement('p');
+    var element = document.createElement('h3');
+    element.className = "projname";
     element.innerHTML = "Project Name: " + snapshot.val().name;
-    document.getElementById('proj-overview').appendChild(element);
-    //Print due date
-    element = document.createElement('p');
-    element.innerHTML = "Due date: " + snapshot.val().duedate;
     document.getElementById('proj-overview').appendChild(element);
     //Print ID
     element = document.createElement('p');
+    element.className = "projinfo";
     element.innerHTML = "ID: " + id;
+    document.getElementById('proj-overview').appendChild(element);
+    //Print class
+    element = document.createElement('p');
+    element.className = "projinfo";
+    element.innerHTML = "Class: " + snapshot.val().classname;
+    document.getElementById('proj-overview').appendChild(element);
+    //Print due date
+    element = document.createElement('p');
+    element.className = "projinfo";
+    element.innerHTML = "Due date: " + snapshot.val().duedate;
+    document.getElementById('proj-overview').appendChild(element);
+    //Print summary
+    element = document.createElement('p');
+    element.className = "projinfo";
+    element.innerHTML = "Summary: " + snapshot.val().summary;
+    document.getElementById('proj-overview').appendChild(element);
+    //Print progress bar label
+    element = document.createElement('div');
+    element = document.createElement('h4');
+    element.className = "projlabel";
+    element.innerHTML = "Group Progress:";
     document.getElementById('proj-overview').appendChild(element);
     //Print progress bar
     element = document.createElement('div');
@@ -64,14 +83,6 @@ function projOverview(){
     element2.id = "progressBar";
     element.appendChild(element2);
     document.getElementById('proj-overview').appendChild(element);
-    //Print summary
-    element = document.createElement('p');
-    element.innerHTML = "Summary: " + snapshot.val().summary;
-    document.getElementById('proj-overview').appendChild(element);
-    //Print class
-    element = document.createElement('p');
-    element.innerHTML = "Class: " + snapshot.val().classname;
-    document.getElementById('proj-overview').appendChild(element);
   });
 }
 
@@ -80,6 +91,7 @@ function printProjInfo(mainProj){
   database.ref("groups/" + mainProj + "/users/").once('value').then(function(snapshot){
     var members = snapshot.val();
     //console.log(members)
+      var element = document.createElement('br');
 
     for (var user in members){
       var info = members[user];
@@ -105,14 +117,20 @@ function printProjInfo(mainProj){
           console.log(comp);
         }
 
-
+        //var element = document.createElement('br');
+        //eachUser.appendChild(element);
 
 
         eachUser.appendChild(todo);
+        eachUser.appendChild(element);
+        eachUser.appendChild(element);
 
 
       }
       inbox.appendChild(eachUser);
+      inbox.appendChild(element);
+      inbox.appendChild(element);
+
     }
   });
 }

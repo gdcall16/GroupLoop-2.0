@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
 .skill {
 	list-style: none;
 	font: 12px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
@@ -34,4 +35,77 @@
 .progress {
   height: 20px;
 	background-color: #32127A;
+}
+
+.userClass{
+	background-color: #62a9c1;
+	padding-top: 0.5px;
+	padding-bottom: 0.5px;
+	padding-right: 5px;
+	padding-left: 5px;
+	border-radius: 10px;
+	border-bottom: solid;
+	border-color: black;
+	border-width: 0.5px;
+}
+
+#proj-overview {
+	background-color: #62a9c1;
+  border: 15px solid #62a9c1;
+  border-radius: 10px;
+}
+
+.projname{
+	font-size: 30px;
+	text-align: center;
+}
+
+.projinfo {
+	background-color: #fdf5e6;
+	padding: 5px;
+  border-radius: 10px;
+}
+
+.projlabel {
+	font-size: 20px;
+	text-align: center;
+}
+
+
+body {
+  align: center;
+  margin: 2cm 4cm 3cm 4cm;
+  /*background-color: #D5F5E3;*/
+  background-image: url("../backgroundPage.jpg");
+  font-family: 'Raleway';
+  line-height: 150%;
+}
+
+
+p2 { /* For copyright text in bottom left*/
+  font-size: x-small;
+}
+img {
+  display: block;
+  margin: auto;
+
+}
+
+a { /* links to other pages */
+  margin: 200px 100px 200px 100px;
+  text-decoration: none;
+  text-align: justify;
+  font-size: 125%;
+  color: black;
+}
+
+a:hover{
+  color: white;
+}
+form {
+  direction: rtl;
+}
+input {
+  display: block;
+  direction: ltr;
 }
