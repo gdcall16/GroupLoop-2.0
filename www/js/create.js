@@ -33,7 +33,7 @@ function numGen() {
 //Store the data of the project
 function storeData(){
   var className = document.getElementById('name').value;
-  var projName = document.getElementById('email').value;
+  var projName = document.getElementById('name').value;
   var dateDue = document.getElementById('duedate').value;
   //Generate project id
   var projId = numGen();
