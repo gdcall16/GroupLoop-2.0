@@ -38,15 +38,10 @@
 }
 
 .userClass{
-	background-color: #93db74;
-	padding-top: 0.5px;
-	padding-bottom: 0.5px;
-	padding-right: 5px;
-	padding-left: 5px;
+	background-color: #ffbf87; /*#cc8fe8; #d3a7e8; */
+	padding: 10px;
 	border-radius: 10px;
-	border-bottom: solid;
-	border-color: black;
-	border-width: 0.5px;
+
 }
 
 #proj-overview {
@@ -71,6 +66,15 @@
 	text-align: center;
 }
 
+.username {
+	font-size: 20px;
+	text-align: center;
+	background-color: #fdf5e6;
+	margin-left: 350px;
+	margin-right: 350px;
+	padding: 5px;
+	border-radius: 10px;
+}
 
 body {
   align: center;

@@ -34,7 +34,7 @@ function calcPercentage() {
       val = per;
     }
   });
-  setTimeout(projOverview, 1000);
+  setTimeout(projOverview, 100);
 }
 
 
@@ -96,7 +96,8 @@ function printProjInfo(mainProj){
       var info = members[user];
       var eachUser = document.createElement("div");
       eachUser.className = "userClass";
-      var nameOfUser = document.createElement("p");
+      var nameOfUser = document.createElement("h4");
+      nameOfUser.className = "username";
       var inbox = document.getElementById("container");
       nameOfUser.innerHTML = user;
       eachUser.appendChild(nameOfUser);
@@ -112,11 +113,11 @@ function printProjInfo(mainProj){
 
         var todo = document.createElement("p");
         if (comp == true){
-          todo.innerHTML = desc + ": completed";
+          todo.innerHTML = "Task: " + desc + " COMPLETED";
           console.log(comp);
         }
         if (comp == false){
-          todo.innerHTML = desc + ": uncompleted";
+          todo.innerHTML = "Task: " + desc + " INCOMPLETE";
 
           console.log(comp);
         }
@@ -132,6 +133,8 @@ function printProjInfo(mainProj){
 
       }
       inbox.appendChild(eachUser);
+      var br = document.createElement('br');
+      inbox.appendChild(br);
     }
   });
 }
