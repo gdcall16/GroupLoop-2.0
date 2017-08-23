@@ -20,7 +20,7 @@ function start(){
   console.log(currentUser);
   console.log(sessionStorage.id);
 }
-
+window.onload = start();
 //function to generate a number
 function numGen() {
   var pin = "";
