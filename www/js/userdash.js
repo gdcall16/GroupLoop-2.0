@@ -24,31 +24,34 @@ database.ref("users/" + username + "/projects").once('value').then(function(snap
   //Check if ids in list match ids of groups
   database.ref("groups").once('value').then(function(snapshot){
     snapshot.forEach(function(childSnapshot){
-      json = String(childSnapshot.key);
+      console.log(childSnapshot.key);
+      json = childSnapshot.key;
       //Checks if id is valid
       for (var id in ids) {
         if (ids[id] == json) {
+          console.log("Test loop");
           //Calculates completion progress for group
-            var num = 0;
-            var complete = 0;
-            database.ref("groups/" + ids[id] + "/members").once('value').then(function(snapshot){
-              snapshot.forEach(function(childSnapshot) {
-                childSnapshot.val().tasks.forEach(function(babySnapshot){
-                  num += 1;
-                  if (babySnapshot.completed == true) {
-                    complete += 1;
-                  }
-                });
-              });
-              //Sets val equal to percent completed
-              if (num == 0) {
-                val = 0;
+          var num = 0;
+          var complete = 0;
+          database.ref("groups/" + ids[id] + "/members").once('value').then(function(snapshot){
+            snapshot.forEach(function(childSnapshot) {
+              childSnapshot.forEach(function(babySnapshot) {
+                num += 1;
+                if (babySnapshot.val().completed == true) {
+                  complete += 1;
               }
-              else {
-                var avg = complete/num;
-                var per = avg * 100;
-                val = per;
-              }
+            });
+            });
+            if (num == 0) {
+              val = 0;
+            }
+            else {
+              console.log(complete);
+              console.log(num);
+              var avg = complete/num;
+              var per = avg * 100;
+              val = per;
+            }
           //Create div for project
           var element = document.createElement('div');
           //Create project data div and add values
@@ -102,6 +105,6 @@ database.ref("users/" + username + "/projects").once('value').then(function(snap
         }
       }
     });
+    });
   });
-});
-}
+};
