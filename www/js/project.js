@@ -83,10 +83,12 @@ function printProjInfo(mainProj){
 
     for (var user in members){
       var info = members[user];
+      var eachUser = document.createElement("div");
+      eachUser.className = "userClass";
       var nameOfUser = document.createElement("p");
       var inbox = document.getElementById("container");
       nameOfUser.innerHTML = user;
-      inbox.appendChild(nameOfUser);
+      eachUser.appendChild(nameOfUser);
       for (var task in info){
         var infoOfTask = info[task];
         var desc = infoOfTask["desc"];
@@ -106,10 +108,11 @@ function printProjInfo(mainProj){
 
 
 
-        inbox.appendChild(todo);
+        eachUser.appendChild(todo);
 
 
       }
+      inbox.appendChild(eachUser);
     }
   });
 }
