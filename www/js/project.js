@@ -19,6 +19,7 @@ function checkOff (name) {
 }
 
 function calcPercentage() {
+  console.log("called");
   var num = 0;
   var complete = 0;
   database.ref("groups/" + id + "/users").once('value').then(function(snapshot){
