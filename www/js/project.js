@@ -22,15 +22,21 @@ function calcPercentage() {
   console.log("called");
   var num = 0;
   var complete = 0;
-  database.ref("groups/" + id + "/users").once('value').then(function(snapshot){
-    snapshot.forEach(function(childSnapshot) {
-      childSnapshot.forEach(function(babySnapshot) {
-        num += 1;
-        if (babySnapshot.val().completed == true) {
-          complete += 1;
+  database.ref("groups/" + id).once('value').then(function(snapshot){
+    var data = snapshot.val();
+    var users = data.users;
+
+    for (var user in users) {
+      for(var task in users[user]) {
+
+        if (task != "task0") {
+          num +=1;
+          if (users[user][task]["completed"] == true) {
+            complete += 1;
+          }
+        }
       }
-    });
-    });
+    }
     if (num == 0) {
       val = 0;
     }
@@ -39,9 +45,7 @@ function calcPercentage() {
       var per = avg * 100;
       val = per;
     }
-  });
-  var head = document.getElementById("proj-overview");
-  database.ref("groups/" + id).on("value", function(snapshot){
+    var head = document.getElementById("proj-overview");
     //Print project name
     var element = document.createElement('h3');
     element.className = "projname";
@@ -103,38 +107,36 @@ function printProjInfo(){
       nameOfUser.innerHTML = user;
       eachUser.appendChild(nameOfUser);
       for (var task in info){
-        var eachTask = document.createElement("div");
-        var checkmark = document.createElement("BUTTON");
-        checkmark.innerHTML = "✔";
-        var infoOfTask = info[task];
-        var desc = infoOfTask["desc"];
-        var comp = infoOfTask["completion"];
-        var todo = document.createElement("p");
-        todo.className
-        if (comp == true){
-          todo.innerHTML = "   " + desc + ": COMPLETED";
+        if (task != "task0") {
+          console.log(task);
+          var eachTask = document.createElement("div");
+          var checkmark = document.createElement("BUTTON");
+          checkmark.innerHTML = "✔";
+          var infoOfTask = info[task];
+          var desc = infoOfTask["desc"];
+          var comp = infoOfTask["completion"];
+          var todo = document.createElement("p");
+          todo.className
+          if (comp == true){
+            todo.innerHTML = "   " + desc + ": COMPLETED";
 
+          }
+          if (comp == false){
+            todo.innerHTML = "   " + desc + ": INCOMPLETE";
+          }
+          checkmark.style = "display: inline";
+          checkmark.onclick = checkOff(task);
+          todo.style = "display: inline";
+          eachTask.className = "taskClass";
+          eachTask.appendChild(checkmark);
+          eachTask.appendChild(todo);
+          eachUser.appendChild(eachTask);
+
+          inbox.appendChild(eachUser);
+          var br = document.createElement('br');
+          inbox.appendChild(br);
         }
-        if (comp == false){
-          todo.innerHTML = "   " + desc + ": INCOMPLETE";
-
-
-        }
-        checkmark.style = "display: inline";
-        checkmark.onclick = checkOff(infoOfTask);
-        todo.style = "display: inline";
-        eachTask.className = "taskClass";
-        eachTask.appendChild(checkmark);
-        eachTask.appendChild(todo);
-        eachUser.appendChild(eachTask);
-
-
-
-
       }
-      inbox.appendChild(eachUser);
-      var br = document.createElement('br');
-      inbox.appendChild(br);
     }
   });
 }
@@ -144,15 +146,15 @@ function addTask(){
   console.log("yay!")
   var newTask = document.getElementById('loadTask').value;
   console.log (sessionStorage.username)
-  database.ref("groups/gdc123/users/" + sessionStorage.username).once('value').then(function(snapshot){
+  database.ref("groups/" + id + "/users/" + sessionStorage.username).once('value').then(function(snapshot){
     var json = snapshot.val();
     if (json != null){
-    console.log("not null")
-    var numOfTasks = Object.keys(json).length
-    var addNewTask = numOfTasks + 1
-    var taskName = "task" + addNewTask
+    console.log("not null");
+    var numOfTasks = Object.keys(json).length - 1;
+    var addNewTask = numOfTasks + 1;
+    var taskName = "task" + addNewTask;
 
-    database.ref("groups/gdc123/users/" + sessionStorage.username + "/" + taskName).set({desc: newTask, completion: false});
+    database.ref("groups/"+ id + "/users/" + sessionStorage.username + "/" + taskName).set({desc: newTask, completion: false});
     }
     else{
       console.log("null")
