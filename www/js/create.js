@@ -42,13 +42,14 @@ function storeData(){
   var z = document.getElementById("text");
   z.appendChild(pin);
   //Add project data to the database
+  sessionStorage.setItem('id', projId);
   firebase.database().ref("groups/" + projId).set({
     //TODO add user to list of users
     name: projName,
     duedate: dateDue,
     classname: className,
   });
-  firebase.database().ref("groups/" + projId + "/members/" + currentUser).set({
-    tasks : false,
+  firebase.database().ref("groups/" + projId + "/members/" + username).set({
+    task0: true,
   });
 }
