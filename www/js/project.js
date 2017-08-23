@@ -39,11 +39,6 @@ function calcPercentage() {
       val = per;
     }
   });
-  setTimeout(projOverview, 100);
-}
-
-
-function projOverview(){
   var head = document.getElementById("proj-overview");
   database.ref("groups/" + id).on("value", function(snapshot){
     //Print project name
@@ -90,9 +85,9 @@ function projOverview(){
   });
 }
 
-function printProjInfo(mainProj){
+function printProjInfo(){
 
-  database.ref("groups/" + mainProj + "/users/").once('value').then(function(snapshot){
+  database.ref("groups/" + id + "/users/").once('value').then(function(snapshot){
     var members = snapshot.val();
     //console.log(members)
 
