@@ -73,10 +73,10 @@ function calcPercentage() {
     element.innerHTML = "Due date: " + snapshot.val().duedate;
     document.getElementById('proj-overview').appendChild(element);
     //Print summary
-    element = document.createElement('p');
+    /*element = document.createElement('p');
     element.className = "projinfo";
     element.innerHTML = "Summary: " + snapshot.val().summary;
-    document.getElementById('proj-overview').appendChild(element);
+    document.getElementById('proj-overview').appendChild(element); */
     //Print progress bar label
     element = document.createElement('div');
     element = document.createElement('h4');
@@ -117,6 +117,7 @@ function printProjInfo(){
           var eachTask = document.createElement("div");
           var checkmark = document.createElement("BUTTON");
           checkmark.innerHTML = "✔";
+          checkmark.className = "buttons";
           var infoOfTask = info[task];
           var desc = infoOfTask["desc"];
           var comp = infoOfTask["completion"];

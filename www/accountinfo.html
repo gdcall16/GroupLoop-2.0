@@ -5,22 +5,11 @@
 <link rel="stylesheet" type="text/css" href="css/buttonstyle.css">
 <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 <!--<link rel="stylesheet" type="text/css" href="acountinfo.css">-->
-<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDCwQyhxTLe0YlhRlWCIJN3f7HotFVoaUo",
-    authDomain: "group-loop.firebaseapp.com",
-    databaseURL: "https://group-loop.firebaseio.com",
-    projectId: "group-loop",
-    storageBucket: "group-loop.appspot.com",
-    messagingSenderId: "224750482964"
-  };
-  firebase.initializeApp(config);
-</script>
+<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+<script src="js/accountinfo.js"></script>
   <title>Acount Information</title>
  </head>
-<body>
+<body onload="account()">
 <img src="gllogo.png" alt=Logo>
 <div class="dropdown">
   <button class="dropbtn">...</button>
@@ -32,15 +21,14 @@
   </div>
 </div>
 <br>
-<p>Username: </p>
+<p id="username">Username: </p>
 <br>
-<p>Name: </p>
+<p id="name">Name: </p>
 <br>
-<p>Password: </p>
+<p id="password">Password: </p>
 <br>
-<p>Email: </p>
+<p id="email">Email: </p>
 <br>
-
 <p2>published 2017  created by gabi, jenna, katie and lucia with AT&T Girls Who Code Summer Immersion Camp.</p2>
 
 </body>

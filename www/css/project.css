@@ -27,7 +27,7 @@
 }
 
 .bar {
-  width: 300px;
+  width: 100%;
 	height:20px;
   background-color: grey;
 }
@@ -70,8 +70,8 @@
 	font-size: 20px;
 	text-align: center;
 	background-color: #fdf5e6;
-	margin-left: 350px;
-	margin-right: 350px;
+	margin-left: 25%;
+	margin-right: 25%;
 	padding: 5px;
 	border-radius: 10px;
 }
@@ -116,4 +116,10 @@ form {
 input {
   display: block;
   direction: ltr;
+}
+
+.buttons {
+  background-color: #ff6200;
+  font-size: 15px;
+  padding: 10px;
 }

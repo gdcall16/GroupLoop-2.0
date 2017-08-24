@@ -41,11 +41,11 @@ function storeData(){
   document.getElementById('create').style = "display:none;";
   var pin = document.createElement('h3');
   pin.textContent = "Your project id is: " + projId;
-  document.body.appendChild(pin);
+  document.getElementById('text').appendChild(pin);
   var link = document.createElement('a');
   link.href = "project.html";
   link.innerHTML = "Go to project";
-  document.body.appendChild(link);
+  document.getElementById('text').appendChild(link);
   //Add project data to the database
   firebase.database().ref("groups/" + projId).set({
     //TODO add user to list of users
