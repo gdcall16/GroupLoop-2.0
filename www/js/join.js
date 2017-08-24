@@ -32,9 +32,11 @@ function joinProj() {
     });
     firebase.database().ref("users/" + currentUser + "/projects/" + id).set(true);
     sessionStorage.setItem("id", id);
+    console.log("Not in proj");
     window.location = "project.html";
   }
   else {
+    console.log("In proj");
     document.getElementById('confirm').style = "display:none;";
     var pin = document.createElement('p');
     pin.textContent = "You are already a member of this group";
@@ -62,7 +64,7 @@ function findProj() {
         pin.textContent = "The name of this project is: "+ name + ", do you want to join this project?";
         var btn = document.createElement('button');
         btn.innerHTML = "Join Group";
-        btn.onclick = "joinProj()";
+        btn.onclick = joinProj;
         var br = document.createElement('br');
         pin.appendChild(br);
         pin.appendChild(btn);
