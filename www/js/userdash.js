@@ -33,15 +33,20 @@ database.ref("users/" + username + "/projects").once('value').then(function(snap
           //Calculates completion progress for group
           var num = 0;
           var complete = 0;
-          database.ref("groups/" + ids[id] + "/users").once('value').then(function(snapshot){
-            snapshot.forEach(function(childSnapshot) {
-              childSnapshot.forEach(function(babySnapshot) {
-                num += 1;
-                if (babySnapshot.val().completed == true) {
-                  complete += 1;
+          console.log(id);
+          database.ref("groups/" + ids[id]).once('value').then(function(snapshot){
+            var data = snapshot.val();
+            var users = data.users;
+            for (var user in users) {
+              for(var task in users[user]) {
+                if (task != "task0") {
+                  num +=1;
+                  if (users[user][task]["completion"] == true) {
+                    complete += 1;
+                  }
+                }
               }
-            });
-            });
+            }
             if (num == 0) {
               val = 0;
             }
