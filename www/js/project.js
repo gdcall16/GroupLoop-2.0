@@ -153,6 +153,7 @@ function printProjInfo(){
 
 function addTask(){
   var newTask = document.getElementById('loadTask').value;
+  if (newTask != ""){
   database.ref("groups/" + id + "/users/" + sessionStorage.username).once('value').then(function(snapshot){
     var json = snapshot.val();
     if (json != null){
@@ -161,10 +162,11 @@ function addTask(){
     var taskName = "task" + addNewTask;
 
     database.ref("groups/"+ id + "/users/" + sessionStorage.username + "/" + taskName).set({desc: newTask, completion: false}).then(printProjInfo(), calcPercentage());
-
+    document.getElementById('loadTask').value = "";
     }
     else{
       console.log("null")
     }
   });
+}
 }
