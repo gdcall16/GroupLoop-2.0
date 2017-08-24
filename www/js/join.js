@@ -20,24 +20,26 @@ function start(){
 function joinProj() {
   var able = true;
   database.ref("groups/" + id + "/users").once('value').then(function(snapshot){
-    snapshot.forEach(function(childSnapshot) {
-      if (childSnapshot.key == currentUser){
+    var members = snapshot.val();
+    for (var member in members){
+      if (member == currentUser){
         able = false;
       }
-    });
+    }
   if (able == true){
     firebase.database().ref("groups/" + id + "/users/" + currentUser).set({
-      0 : true,
+      "task0" : true,
     });
+    firebase.database().ref("users/" + currentUser + "/projects/" + id).set(true);
     sessionStorage.setItem("id", id);
-    window.location = "project.html";
+    //window.location = "project.html";
   }
   else {
     document.getElementById('confirm').style = "display:none;";
     var pin = document.createElement('p');
     pin.textContent = "You are already a member of this group";
     document.getElementById('text').appendChild(pin);
-  };
+  }
   });
 }
 //find the project and add user using id

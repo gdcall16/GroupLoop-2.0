@@ -22,6 +22,7 @@ function calcPercentage() {
   console.log("called");
   var num = 0;
   var complete = 0;
+  console.log(id);
   database.ref("groups/" + id).once('value').then(function(snapshot){
     var data = snapshot.val();
     var users = data.users;
@@ -92,7 +93,7 @@ function calcPercentage() {
 
 function printProjInfo(){
 
-  database.ref("groups/" + id + "/users/").once('value').then(function(snapshot){
+  database.ref("groups/" + id + "/users/").on('value', function(snapshot){
     var members = snapshot.val();
     //console.log(members)
 

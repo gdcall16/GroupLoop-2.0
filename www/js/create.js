@@ -57,4 +57,5 @@ function storeData(){
   firebase.database().ref("groups/" + projId + "/users/" + currentUser).set({
     task0: true,
   });
+  firebase.database().ref("users/" + currentUser + "/projects/" + projId).set(true);
 }

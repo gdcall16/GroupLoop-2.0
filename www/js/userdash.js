@@ -52,15 +52,16 @@ database.ref("users/" + username + "/projects").once('value').then(function(snap
               var per = avg * 100;
               val = per;
             }
+
           //Create div for project
           var element = document.createElement('div');
           //Create project data div and add values
           var element2 = document.createElement('div');
-          element2.value = childSnapshot.key;
+
           element2.className = "eachproject";
           element2.style = "cursor: pointer;";
           element2.onclick = function(element2) {
-            sessionStorage.setItem('id', element2.value);
+            sessionStorage.setItem('id', childSnapshot.key);
             window.location = "project.html";
           };
           var element3 = document.createElement('div');
