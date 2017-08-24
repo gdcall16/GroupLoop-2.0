@@ -16,6 +16,10 @@ calcPercentage();
 
 function calcPercentage() {
   console.log("called");
+  var inbox = document.getElementById('proj-overview');
+  while (inbox.hasChildNodes()) {
+    inbox.removeChild(inbox.lastChild);
+  }
   var num = 0;
   var complete = 0;
   console.log(id);
@@ -131,13 +135,13 @@ function printProjInfo(){
             console.log(this.id);
             database.ref("groups/" + id + "/users/" + username + "/" + this.id  + "/completion").set(true);
             printProjInfo();
+            calcPercentage();
           };
           todo.style = "display: inline";
           eachTask.className = "taskClass";
           eachTask.appendChild(checkmark);
           eachTask.appendChild(todo);
           eachUser.appendChild(eachTask);
-
           inbox.appendChild(eachUser);
         }
       }
@@ -155,7 +159,7 @@ function addTask(){
     var addNewTask = numOfTasks + 1;
     var taskName = "task" + addNewTask;
 
-    database.ref("groups/"+ id + "/users/" + sessionStorage.username + "/" + taskName).set({desc: newTask, completion: false}).then(printProjInfo());
+    database.ref("groups/"+ id + "/users/" + sessionStorage.username + "/" + taskName).set({desc: newTask, completion: false}).then(printProjInfo(), calcPercentage());
 
     }
     else{
