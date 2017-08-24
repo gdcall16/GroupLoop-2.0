@@ -14,10 +14,6 @@ var username = sessionStorage.username;
 var val = 0;
 calcPercentage();
 
-function checkOff (name) {
-  database.ref("groups/" + id + "/users/" + username + "/" + name + "/completion").set(true);
-}
-
 function calcPercentage() {
   console.log("called");
   var num = 0;
@@ -92,19 +88,22 @@ function calcPercentage() {
 }
 
 function printProjInfo(){
-
-  database.ref("groups/" + id + "/users/").on('value', function(snapshot){
+  database.ref("groups/" + id + "/users/").once('value').then(function(snapshot){
+    var inbox = document.getElementById('container');
+    while (inbox.hasChildNodes()) {
+      console.log(inbox.lastChild);
+      inbox.removeChild(inbox.lastChild);
+      console.log("Child removed");
+    }
+    console.log("Print called");
     var members = snapshot.val();
     //console.log(members)
-
     for (var user in members){
-
       var info = members[user];
       var eachUser = document.createElement("div");
       eachUser.className = "userClass";
       var nameOfUser = document.createElement("h4");
       nameOfUser.className = "username";
-      var inbox = document.getElementById("container");
       nameOfUser.innerHTML = user;
       eachUser.appendChild(nameOfUser);
       for (var task in info){
@@ -126,7 +125,9 @@ function printProjInfo(){
             todo.innerHTML = "   " + desc + ": INCOMPLETE";
           }
           checkmark.style = "display: inline";
-          checkmark.onclick = checkOff(task);
+          checkmark.onclick = function(task) {
+            database.ref("groups/" + id + "/users/" + username + "/" + task + "/completion").set(true);
+          };
           todo.style = "display: inline";
           eachTask.className = "taskClass";
           eachTask.appendChild(checkmark);
@@ -155,7 +156,8 @@ function addTask(){
     var addNewTask = numOfTasks + 1;
     var taskName = "task" + addNewTask;
 
-    database.ref("groups/"+ id + "/users/" + sessionStorage.username + "/" + taskName).set({desc: newTask, completion: false});
+    database.ref("groups/"+ id + "/users/" + sessionStorage.username + "/" + taskName).set({desc: newTask, completion: false}).then(printProjInfo());
+
     }
     else{
       console.log("null")
