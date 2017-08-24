@@ -22,13 +22,15 @@ function calcPercentage() {
   database.ref("groups/" + id).once('value').then(function(snapshot){
     var data = snapshot.val();
     var users = data.users;
-
+    console.log("In database");
     for (var user in users) {
+    console.log("Looping through users");
       for(var task in users[user]) {
-
+        console.log("Looping through tasks");
         if (task != "task0") {
           num +=1;
-          if (users[user][task]["completed"] == true) {
+          if (users[user][task]["completion"] == true) {
+            console.log("Task complete");
             complete += 1;
           }
         }
@@ -41,7 +43,10 @@ function calcPercentage() {
       var avg = complete/num;
       var per = avg * 100;
       val = per;
+      console.log(complete);
+      console.log(num);
     }
+    console.log(val);
     var head = document.getElementById("proj-overview");
     //Print project name
     var element = document.createElement('h3');
@@ -91,11 +96,8 @@ function printProjInfo(){
   database.ref("groups/" + id + "/users/").once('value').then(function(snapshot){
     var inbox = document.getElementById('container');
     while (inbox.hasChildNodes()) {
-      console.log(inbox.lastChild);
       inbox.removeChild(inbox.lastChild);
-      console.log("Child removed");
     }
-    console.log("Print called");
     var members = snapshot.val();
     //console.log(members)
     for (var user in members){
@@ -108,7 +110,6 @@ function printProjInfo(){
       eachUser.appendChild(nameOfUser);
       for (var task in info){
         if (task != "task0") {
-          console.log(task);
           var eachTask = document.createElement("div");
           var checkmark = document.createElement("BUTTON");
           checkmark.innerHTML = "✔";
@@ -116,7 +117,6 @@ function printProjInfo(){
           var desc = infoOfTask["desc"];
           var comp = infoOfTask["completion"];
           var todo = document.createElement("p");
-          todo.className
           if (comp == true){
             todo.innerHTML = "   " + desc + ": COMPLETED";
 
@@ -125,8 +125,12 @@ function printProjInfo(){
             todo.innerHTML = "   " + desc + ": INCOMPLETE";
           }
           checkmark.style = "display: inline";
-          checkmark.onclick = function(task) {
-            database.ref("groups/" + id + "/users/" + username + "/" + task + "/completion").set(true);
+          checkmark.id = task;
+          checkmark.onclick = function() {
+            console.log("Task clicked");
+            console.log(this.id);
+            database.ref("groups/" + id + "/users/" + username + "/" + this.id  + "/completion").set(true);
+            printProjInfo();
           };
           todo.style = "display: inline";
           eachTask.className = "taskClass";
@@ -135,8 +139,6 @@ function printProjInfo(){
           eachUser.appendChild(eachTask);
 
           inbox.appendChild(eachUser);
-          var br = document.createElement('br');
-          inbox.appendChild(br);
         }
       }
     }
@@ -145,13 +147,10 @@ function printProjInfo(){
 
 
 function addTask(){
-  console.log("yay!")
   var newTask = document.getElementById('loadTask').value;
-  console.log (sessionStorage.username)
   database.ref("groups/" + id + "/users/" + sessionStorage.username).once('value').then(function(snapshot){
     var json = snapshot.val();
     if (json != null){
-    console.log("not null");
     var numOfTasks = Object.keys(json).length - 1;
     var addNewTask = numOfTasks + 1;
     var taskName = "task" + addNewTask;

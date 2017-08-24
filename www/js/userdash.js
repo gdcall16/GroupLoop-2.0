@@ -60,7 +60,7 @@ database.ref("users/" + username + "/projects").once('value').then(function(snap
 
           element2.className = "eachproject";
           element2.style = "cursor: pointer;";
-          element2.onclick = function(element2) {
+          element2.onclick = function() {
             sessionStorage.setItem('id', childSnapshot.key);
             window.location = "project.html";
           };
